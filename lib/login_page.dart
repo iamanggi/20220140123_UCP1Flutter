@@ -37,47 +37,69 @@ class _LoginPageState extends State<LoginPage> {
               ),
               
               Padding(
-                padding: const EdgeInsets.only(top: 20.0),
+                padding: const EdgeInsets.only(top: 40.0),
                 child: 
-                TextFormField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(18))),
-                    // labelText: 'Email',
-                    hintText: 'Email',
-                    prefixIcon: Icon(Icons.email_rounded),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Username tidak boleh kosong';
-                    }
-                    return null;
-                  },
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Email', 
+                    style: TextStyle(
+                      // fontSize: 16,
+                      fontWeight: FontWeight.bold
+                    ),),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: TextFormField(
+                        controller: emailController,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(18))),
+                          // labelText: 'Email',
+                          hintText: 'Email',
+                          prefixIcon: Icon(Icons.email_rounded),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Username tidak boleh kosong';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
-                child: TextFormField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(18))),
-                    labelText: 'Password',
-                    hintText: 'Masukkan Password',
-                    prefixIcon: Icon(Icons.lock),
-                  ),
-                  obscureText: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Password tidak boleh kosong';
-                    }
-                    return null;
-                  },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('password', style: TextStyle(fontWeight: FontWeight.bold),),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: TextFormField(
+                        controller: passwordController,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(18))),
+                          labelText: 'Password',
+                          hintText: 'Masukkan Password',
+                          prefixIcon: Icon(Icons.lock),
+                        ),
+                        obscureText: true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Password tidak boleh kosong';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10.0),
+                padding: const EdgeInsets.only(top: 40.0),
                 child: SizedBox(
                   width: 500,
                   height: 50,
@@ -104,15 +126,14 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              TextButton(
-                onPressed: () {
-                  // Navigator.push(context, 
-                  // MaterialPageRoute(builder: (context)=> RegisterPage()));
-                },
-                child: Text(
-                  'Belum Memiliki Akun? Silahkan Daftar Disini',
-                  style: TextStyle(fontSize: 16),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Belum Memiliki Akun? Silahkan'),
+                  TextButton(onPressed: (){}
+                  , child: Text('Daftar Disini!',
+                  style: TextStyle(color: const Color.fromARGB(255, 21, 119, 200)),))
+                ],
               )
             ],
           ),
