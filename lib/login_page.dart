@@ -11,7 +11,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  final _formKey = GlobalKey<FormState>(); // <-- diletakkan di luar build
+  final _formKey = GlobalKey<FormState>(); 
 
   @override
   void initState() {
@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form( // <-- Bungkus dengan Form
+      body: Form( 
         key: _formKey,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -106,7 +106,6 @@ class _LoginPageState extends State<LoginPage> {
                   child: ElevatedButton.icon(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        // Lanjutkan ke halaman berikutnya atau login
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Berhasil Masuk!')),
                         );

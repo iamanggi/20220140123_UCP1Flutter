@@ -11,8 +11,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  final _formKey = GlobalKey<FormState>(); // <-- diletakkan di luar build
-
+  final _formKey = GlobalKey<FormState>(); 
   @override
   void initState() {
     super.initState();
@@ -21,82 +20,64 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form( // <-- Bungkus dengan Form
+      body: Form( 
         key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Container(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Daftar Akun Baru'.toUpperCase(),
+                  'Daftar akun baru'.toUpperCase(),
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
+                ), 
+              TextFormField(
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.person),
+                  hintText: 'Nama Lengkap',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10))
+                  )
                 ),
-                
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: 
-                  Column(
-                    children: [
-                      Text('Nama Lengkap'),
-                      TextFormField(
-                        // controller: emailController,
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
                         decoration: InputDecoration(
+                          hintText: 'Email',
+                          prefixIcon: Icon(Icons.email),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(18))),
-                          // labelText: 'Email',
-                          hintText: 'Nama Lengkap',
-                          prefixIcon: Icon(Icons.email_rounded),
+                            borderRadius: BorderRadius.all(Radius.circular(10))
+                          )
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Nama Lengkap tidak boleh kosong';
-                          }
-                          return null;
-                        },
-                      ),
-                    ],
-                  ),
+                      )),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.phone),
+                            hintText: 'No Hp',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(10))
+                            )
+                          ),
+                        ),
+                      )
+                  ],
                 ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(18))
-                    ),
-                    hintText: 'Email',
-                    prefixIcon: Icon(Icons.email_rounded)
-                  ),
-                  validator: (value) {
-                    if(value == null || value.isEmpty){
-                      return 'Email tidak boleh kosong';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(18))
-                    ),
-                    hintText: 'No HP',
-                    prefixIcon: Icon(Icons.phone)
-                  ),
-                  validator: (value) {
-                    if(value == null || value.isEmpty){
-                      return 'No Hp tidak boleh kosong';
-                    }
-                    return null;
-                  },
-                ),
-              ],
+              ),
+              ]
             ),
-          ),
-        ),
-      ),
+          )
+        )
+      
     );
-  }
+}
 }
