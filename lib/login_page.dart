@@ -18,6 +18,8 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
   }
 
+  bool _obscurePassword = true;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,8 +87,18 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: 'Password',
                           hintText: 'Masukkan Password',
                           prefixIcon: Icon(Icons.lock),
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              setState(() {
+                                _obscurePassword = !_obscurePassword;
+                              });
+                            },
+                            child: Icon(
+                              _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                            ),
+                          ),
                         ),
-                        obscureText: true,
+                        obscureText: _obscurePassword,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Password tidak boleh kosong';
