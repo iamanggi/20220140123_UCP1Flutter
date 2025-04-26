@@ -15,9 +15,9 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.blue,
         elevation: 0,
         iconTheme: IconThemeData(
-        color: Colors.white, 
-      ),
-        toolbarHeight: 100, 
+          color: Colors.white,
+        ),
+        toolbarHeight: 100,
         title: Row(
           children: [
             CircleAvatar(
@@ -30,14 +30,12 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Selamat Datang',
-                    style: TextStyle(
-                    fontSize: 15,
-                      color: Colors.white)),
-                  Text('Admin', 
-                  style: TextStyle(
-                    fontSize: 19, 
-                    fontWeight: FontWeight.bold,  
-                    color: Colors.white)),
+                      style: TextStyle(fontSize: 15, color: Colors.white)),
+                  Text('Admin',
+                      style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white)),
                 ],
               ),
             ),
@@ -49,6 +47,90 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.login_rounded),
           )
         ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            Center(
+              child: Image.asset('assets/images/banner.jpg'),
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 160,
+                  width: 180,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue[900],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.sync_lock_rounded, size: 50, color: Colors.white),
+                        SizedBox(height: 10),
+                        Text('Data Piket',
+                            style: TextStyle(fontSize: 18, color: Colors.white)),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 20),
+                Container(
+                  height: 160,
+                  width: 190,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue[900],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.dashboard_customize_rounded, size: 50, color: Colors.white),
+                        SizedBox(height: 10),
+                        Text('Data Pelanggan',
+                            style: TextStyle(fontSize: 18, color: Colors.white)),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Container(
+              height: 160,
+              width: 390, 
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue[900],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.receipt, size: 50, color: Colors.white),
+                    SizedBox(height: 10),
+                    Text('Barang Masuk/Keluar',
+                        style: TextStyle(fontSize: 18, color: Colors.white)),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
