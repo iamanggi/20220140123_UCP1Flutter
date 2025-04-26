@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.login_rounded),
+            icon: Icon(Icons.logout_rounded),
           )
         ],
       ),
