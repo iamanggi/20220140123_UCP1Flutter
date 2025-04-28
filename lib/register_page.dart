@@ -17,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
     super.initState();
   }
 
-  bool _obscurePassword = true; // buat toggle password
+  bool _obscurePassword = true; 
   bool _obscureConfirmPassword = true;
 
   @override
@@ -226,7 +226,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(255, 97, 153, 199),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10), // sudut bulat // warna border
+                            borderRadius: BorderRadius.circular(10), 
                           ),
                         ),
                         label: Text(
