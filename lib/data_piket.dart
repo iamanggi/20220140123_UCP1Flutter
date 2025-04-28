@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; 
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:ucp1_flutter/detail_piket.dart';
 
 
 class DataPiket extends StatefulWidget {
@@ -87,6 +88,7 @@ void initState() {
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
+          child: SingleChildScrollView( 
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -223,7 +225,22 @@ void initState() {
                                           Icons.arrow_forward_ios_rounded,
                                           color: Colors.white,
                                         ),
-                                        onTap: () {},
+                                        onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (context) => DetailPiket(
+                                          nama:
+                                              _daftarPiket[index]['nama'], 
+                                          tanggal:
+                                              _daftarPiket[index]['tanggal'], 
+                                          tugas:
+                                              _daftarPiket[index]['tugas'], 
+                                        ),
+                                  ),
+                                );
+                              },
                                       ),
                                     );
                                   },
@@ -232,6 +249,7 @@ void initState() {
                     ],
                   ),
                 ),
+      )
       )
     );
   }
