@@ -23,6 +23,12 @@ class _PendataanBarangState extends State<PendataanBarang> {
   final List<String> jenisTransaksiList = ['Barang Masuk', 'Barang Keluar'];
   final List<String> jenisBarangList = ['Carrier', 'Sleeping Bag', 'Tenda', 'Sepatu'];
 
+  final Map<String, int> hargaBarang = {
+    'Carrier': 3500000,
+    'Sleeping Bag': 1500000,
+    'Tenda': 700000,
+    'Sepatu': 2500000,
+  };
 
   @override
 void initState() {
@@ -147,6 +153,11 @@ void initState() {
                   onChanged: (value) {
                     setState(() {
                       selectedJenisBarang = value;
+                      if (value != null && hargaBarang.containsKey(value)) {
+                        hargaSatuanController.text = hargaBarang[value]!.toString();
+                      } else {
+                        hargaSatuanController.clear();
+                      }
                     });
                   },
                 ),
