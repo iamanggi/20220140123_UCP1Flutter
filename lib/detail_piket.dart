@@ -16,7 +16,7 @@ class DetailPiket extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF003A60),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
@@ -38,7 +38,7 @@ class DetailPiket extends StatelessWidget {
                 Text(
                   tanggal,
                   style: const TextStyle(
-                    color: Colors.blue,
+                    color:Color(0xFF003A60),
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -46,7 +46,7 @@ class DetailPiket extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color:Color(0xFF003A60),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
@@ -63,7 +63,7 @@ class DetailPiket extends StatelessWidget {
               width: 400,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color:Color(0xFF003A60),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(

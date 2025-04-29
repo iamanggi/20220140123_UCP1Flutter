@@ -22,7 +22,7 @@ class DetailPelanggan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor:Color(0xFF003A60),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
@@ -125,9 +125,10 @@ class DetailPelanggan extends StatelessWidget {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(context, '/homepage', (route) => false);
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Color(0xFF003A60),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15), 
                           ),

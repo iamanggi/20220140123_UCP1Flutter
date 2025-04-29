@@ -24,13 +24,18 @@ class _CustPageState extends State<CustPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back, color: Colors.white,),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);  
+          },
+        ),
         centerTitle: true,
         title: Text(
           'Data Pelanggan',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF003A60),
         toolbarHeight: 100,
       ),
       body: Form( 
@@ -228,7 +233,7 @@ class _CustPageState extends State<CustPage> {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Color(0xFF003A60),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15), 
                           ),
@@ -254,7 +259,7 @@ class _CustPageState extends State<CustPage> {
                           kodePosController.clear();
                         },
                         style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: Colors.blue), 
+                          side: BorderSide(color: Color(0xFF003A60)), 
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
@@ -262,7 +267,7 @@ class _CustPageState extends State<CustPage> {
                         child: Text('Reset',  style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            color: Colors.blue,
+                            color: Color(0xFF003A60),
                           ),)),
                       ),
                     )
