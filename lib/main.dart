@@ -20,12 +20,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: '/',
+      initialRoute: '/login',
       routes: {
-        '/': (context) => const LoginPage(), 
-        '/homepage': (context) => const HomePage(nama: ''),
-        '/dataPiket': (context) => DataPiket(),  
-        '/pendataanBarang': (context) => PendataanBarang(),
+        '/login': (context) => const LoginPage(), 
+        '/homepage': (context) => const HomePage(namaAdmin: ''),
+        '/dataPiket': (context) => DataPiket(namaAdmin: '',),  
+        '/pendataanBarang': (context) => PendataanBarang(namaAdmin: '',),
       }
     );
   }

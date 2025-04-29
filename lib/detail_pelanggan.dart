@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1_flutter/home_page.dart';
 
 class DetailPelanggan extends StatelessWidget {
   final String nama;
@@ -7,6 +8,7 @@ class DetailPelanggan extends StatelessWidget {
   final String alamat;
   final String provinsi;
   final String kodePos;
+  final String namaAdmin;
 
   const DetailPelanggan({
     Key? key,
@@ -16,6 +18,7 @@ class DetailPelanggan extends StatelessWidget {
     required this.alamat,
     required this.provinsi,
     required this.kodePos,
+    required this.namaAdmin,
   }) : super(key: key);
 
   @override
@@ -42,7 +45,7 @@ class DetailPelanggan extends StatelessWidget {
             const SizedBox(height: 20),
             CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage('assets/images/profile.jpg'),
+              backgroundImage: AssetImage('assets/images/profile2.jpg'),
             ),
             const SizedBox(height: 20),
             Text(nama, style: TextStyle(
@@ -125,7 +128,13 @@ class DetailPelanggan extends StatelessWidget {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamedAndRemoveUntil(context, '/homepage', (route) => false);
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(namaAdmin: namaAdmin),
+                            ),
+                            (route) => false,
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFF003A60),

@@ -5,7 +5,9 @@ import 'package:ucp1_flutter/pembayaran.dart';
 
 
 class PendataanBarang extends StatefulWidget {
-  const PendataanBarang({super.key});
+  final String namaAdmin;
+  const PendataanBarang({super.key,
+  required this.namaAdmin});
 
   @override
   State<PendataanBarang> createState() => _PendataanBarangState();
@@ -252,6 +254,7 @@ void initState() {
                                       jumlah: int.parse(jumlahBarangController.text),
                                       hargaSatuan: int.parse(hargaSatuanController.text),
                                       totalHarga: totalHarga,
+                                      namaAdmin: widget.namaAdmin
                                     ),
                                   ),
                                 );

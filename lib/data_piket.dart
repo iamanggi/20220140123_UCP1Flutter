@@ -5,7 +5,9 @@ import 'package:ucp1_flutter/detail_piket.dart';
 
 
 class DataPiket extends StatefulWidget {
-  const DataPiket({super.key});
+    final String namaAdmin;
+  const DataPiket({super.key,
+    required this.namaAdmin});
 
   @override
   State<DataPiket> createState() => _DataPiketState();
@@ -14,7 +16,6 @@ class DataPiket extends StatefulWidget {
 class _DataPiketState extends State<DataPiket> {
   final TextEditingController _tanggalController = TextEditingController();
   final TextEditingController _tugasController = TextEditingController();
-  final TextEditingController _namaController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   List<Map<String, dynamic>> _daftarPiket = [];
@@ -29,22 +30,19 @@ class _DataPiketState extends State<DataPiket> {
   void dispose() {
     _tanggalController.dispose();
     _tugasController.dispose();
-    _namaController.dispose();
     super.dispose();
   }
 
   void _tambahTugas() {
-    if (_tugasController.text.isNotEmpty &&
-        _namaController.text.isNotEmpty &&
+    if (_tugasController.text.isNotEmpty && widget.namaAdmin.isNotEmpty &&
         _tanggalController.text.isNotEmpty) {
       setState(() {
         _daftarPiket.add({
-          'nama': _namaController.text,
+          'nama': widget.namaAdmin,
           'tanggal': _tanggalController.text,
           'tugas': _tugasController.text,
         });
         _tugasController.clear();
-        _namaController.clear();
         _tanggalController.clear();
       });
     } else {
@@ -105,7 +103,8 @@ class _DataPiketState extends State<DataPiket> {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
-                  controller: _namaController,
+                  initialValue: widget.namaAdmin,
+                  readOnly: true,
                   decoration: InputDecoration(
                     hintText: 'Nama Anggota',
                     border: OutlineInputBorder(
@@ -218,39 +217,42 @@ class _DataPiketState extends State<DataPiket> {
                             ),
                           ),
                       )
-                      : ListView.builder(
-                          itemCount: _daftarPiket.length,
-                          itemBuilder: (context, index) {
-                            return Card(
-                              color: Color(0xFF003A60),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: ListTile(
-                                title: Text(
-                                  _daftarPiket[index]['tugas'],
-                                  style: const TextStyle(color: Colors.white),
+                      : SizedBox(
+                        height: 300,
+                        child: ListView.builder(
+                            itemCount: _daftarPiket.length,
+                            itemBuilder: (context, index) {
+                              return Card(
+                                color: Color(0xFF003A60),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
-                                trailing: const Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  color: Colors.white,
-                                ),
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => DetailPiket(
-                                        nama: _daftarPiket[index]['nama'],
-                                        tanggal: _daftarPiket[index]['tanggal'],
-                                        tugas: _daftarPiket[index]['tugas'],
+                                child: ListTile(
+                                  title: Text(
+                                    _daftarPiket[index]['tugas'],
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
+                                  trailing: const Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    color: Colors.white,
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailPiket(
+                                          nama: _daftarPiket[index]['nama'],
+                                          tanggal: _daftarPiket[index]['tanggal'],
+                                          tugas: _daftarPiket[index]['tugas'],
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            );
-                          },
-                        ),
+                                    );
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                      ),
                 
               ],
             ),

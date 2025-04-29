@@ -5,9 +5,9 @@ import 'package:ucp1_flutter/login_page.dart';
 import 'package:ucp1_flutter/pendataan_barang.dart';
 
 class HomePage extends StatefulWidget {
-  final String nama;
+  final String namaAdmin;
   const HomePage({super.key,
-  required this.nama
+  required this.namaAdmin
   });
 
   @override
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text('Selamat Datang',
                       style: TextStyle(fontSize: 15, color: Colors.white)),
-                  Text(widget.nama,
+                  Text(widget.namaAdmin,
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => DataPiket()),
+                        MaterialPageRoute(builder: (context) => DataPiket(namaAdmin: widget.namaAdmin))
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CustPage()), 
+                        MaterialPageRoute(builder: (context) => CustPage(namaAdmin: widget.namaAdmin,)), 
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -137,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PendataanBarang()), 
+                        MaterialPageRoute(builder: (context) => PendataanBarang(namaAdmin: widget.namaAdmin,)), 
                       );
                 },
                 style: ElevatedButton.styleFrom(

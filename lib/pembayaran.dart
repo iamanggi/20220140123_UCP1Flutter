@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1_flutter/home_page.dart';
 
 class DetailDataBarangPage extends StatelessWidget {
   final String tanggal;
@@ -7,6 +8,7 @@ class DetailDataBarangPage extends StatelessWidget {
   final int jumlah;
   final int hargaSatuan;
   final int totalHarga;
+  final String namaAdmin;
 
   const DetailDataBarangPage({
     super.key,
@@ -16,6 +18,7 @@ class DetailDataBarangPage extends StatelessWidget {
     required this.jumlah,
     required this.hargaSatuan,
     required this.totalHarga,
+    required this.namaAdmin
   });
 
   @override
@@ -220,7 +223,13 @@ class DetailDataBarangPage extends StatelessWidget {
                 margin: const EdgeInsets.only(bottom: 20),
                 child: ElevatedButton(
                   onPressed: (){
-                    Navigator.pushNamedAndRemoveUntil(context, '/homepage', (route) => false);
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(namaAdmin: namaAdmin),
+                        ),
+                        (route) => false,
+                      );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF003A60),

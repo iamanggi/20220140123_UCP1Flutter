@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ucp1_flutter/detail_pelanggan.dart';
 
 class CustPage extends StatefulWidget {
-  const CustPage({super.key});
+   final String namaAdmin;
+  const CustPage({super.key,
+  required this.namaAdmin});
 
   @override
   State<CustPage> createState() => _CustPageState();
@@ -227,6 +229,7 @@ class _CustPageState extends State<CustPage> {
                                   alamat: alamatController.text,
                                   provinsi: provinsiController.text,
                                   kodePos: kodePosController.text,
+                                  namaAdmin: widget.namaAdmin,
                                 ),
                               ),
                             );
