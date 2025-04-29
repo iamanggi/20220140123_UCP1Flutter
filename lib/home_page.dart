@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1_flutter/data_pelanggan.dart';
+import 'package:ucp1_flutter/data_piket.dart';
+import 'package:ucp1_flutter/login_page.dart';
+import 'package:ucp1_flutter/pendataan_barang.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String nama;
+  const HomePage({super.key,
+  required this.nama
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -12,7 +19,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF003A60),
+        automaticallyImplyLeading: false, 
         elevation: 0,
         iconTheme: IconThemeData(
           color: Colors.white,
@@ -31,9 +39,9 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text('Selamat Datang',
                       style: TextStyle(fontSize: 15, color: Colors.white)),
-                  Text('Admin',
+                  Text(widget.nama,
                       style: TextStyle(
-                          fontSize: 19,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Colors.white)),
                 ],
@@ -43,7 +51,12 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(context,
+                    MaterialPageRoute(builder: (context)=> LoginPage()),
+                    (route)=> false,
+                    ); 
+            },
             icon: Icon(Icons.logout_rounded),
           )
         ],
@@ -53,7 +66,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Center(
-              child: Image.asset('assets/images/banner.jpg'),
+              child: Image.asset('assets/images/banner.png'),
             ),
             SizedBox(height: 20),
             Row(
@@ -63,9 +76,14 @@ class _HomePageState extends State<HomePage> {
                   height: 160,
                   width: 180,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DataPiket()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue[900],
+                      backgroundColor:Color(0xFF003A60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -84,11 +102,16 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(width: 20),
                 Container(
                   height: 160,
-                  width: 190,
+                  width: 180,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CustPage()), 
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue[900],
+                      backgroundColor: Color(0xFF003A60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -111,9 +134,14 @@ class _HomePageState extends State<HomePage> {
               height: 160,
               width: 390, 
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PendataanBarang()), 
+                      );
+                },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue[900],
+                  backgroundColor: Color(0xFF003A60),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
