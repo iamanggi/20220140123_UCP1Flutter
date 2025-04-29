@@ -219,9 +219,11 @@ class DetailDataBarangPage extends StatelessWidget {
                 width: double.infinity,
                 margin: const EdgeInsets.only(bottom: 20),
                 child: ElevatedButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: (){
+                    Navigator.pushNamedAndRemoveUntil(context, '/homepage', (route) => false);
+                  },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Color(0xFF003A60),
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(

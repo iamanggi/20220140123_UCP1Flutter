@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; 
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:ucp1_flutter/pembayaran.dart';
 
 
 class PendataanBarang extends StatefulWidget {
@@ -62,16 +63,21 @@ void initState() {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back, color: Colors.white,),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);  
+          },
+        ),
         centerTitle: true,
         title: Text(
           'Pendataan Barang',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF003A60),
         toolbarHeight: 100,
       ),
-     body: Form( 
+      body: Form( 
         key: _formKey,
         child: SingleChildScrollView( 
           child:  
@@ -232,10 +238,27 @@ void initState() {
                           child: ElevatedButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                            }
+                                int jumlahBarang = int.tryParse(jumlahBarangController.text) ?? 0;
+                                int hargaSatuan =
+                                    int.tryParse(hargaSatuanController.text) ?? 0;
+                                int totalHarga = jumlahBarang * hargaSatuan;
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetailDataBarangPage(
+                                      tanggal: tanggalController.text,
+                                      jenisTransaksi: selectedJenisTransaksi!,
+                                      jenisBarang: selectedJenisBarang!,
+                                      jumlah: int.parse(jumlahBarangController.text),
+                                      hargaSatuan: int.parse(hargaSatuanController.text),
+                                      totalHarga: totalHarga,
+                                    ),
+                                  ),
+                                );
+                              }
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue,
+                              backgroundColor:Color(0xFF003A60),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15), 
                               ),
