@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ucp1_flutter/home_page.dart';
+import 'package:ucp1_flutter/register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -91,7 +92,6 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(Radius.circular(18))),
-                            labelText: 'Password',
                             hintText: 'Masukkan Password',
                             prefixIcon: Icon(Icons.lock),
                             suffixIcon: InkWell(
@@ -157,7 +157,14 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Belum Memiliki Akun? Silahkan'),
-                    TextButton(onPressed: (){}
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const RegisterPage(),
+                          ),
+                        );
+                    }
                     , child: Text('Daftar Disini!',
                     style: TextStyle(color: Color(0xFF003A60))))
                   ],
